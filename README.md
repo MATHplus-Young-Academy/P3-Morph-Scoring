@@ -12,3 +12,4 @@ The statistical shape model based approach [Ambellan et al. 2021](https://www.sc
 In advance it might be worth grasping some additional information:
 * [GutHub Repo of TES Tandem Tutorial "Population wide Medical Image and Shape Analysis" (Tutorial 2)](https://github.com/ckolbPTB/TES_21_22_Tutorials). Attention: The Mybinder server takes approx. 10min. to start, don't worry about it. Besides the code examples you can also find some [slides](https://github.com/ckolbPTB/TES_21_22_Tutorials/blob/main/tutorial2_pop_med_image_shape_ana/Math%2B_TES_Tut2_Shape_Ana.pdf).
 * [Morphomatics Library](https://morphomatics.github.io)
+* [Update slides](https://docs.google.com/presentation/d/1vkxMv1EDZvgpK3wiMq2OvEySKp9yLgTMvYxdTGlk3GE/edit?usp=sharing)
