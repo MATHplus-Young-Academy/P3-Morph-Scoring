@@ -54,7 +54,7 @@ class ExponentialBarycenter(object):
         # Newton-type fixed point iteration
         with Parallel(n_jobs=n_jobs, prefer='threads', verbose=0) as parallel:
             grad = lambda a: np.sum(parallel(delayed(mfd.connec.log)(a, b)/mfd.metric.norm(a,b) for b in data if b!=a), axis=0)
-            grad_denom = 1/np.sum([mdf.metric.norm(x,b) for b in data if a!=b)
+            grad_denom = 1/np.sum([mdf.metric.norm(x,b) for b in data if a!=b])
             for _ in range(max_iter):
                 g = grad(x)/grad_denom
                 if mfd.metric:
