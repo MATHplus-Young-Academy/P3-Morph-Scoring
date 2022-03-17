@@ -31,7 +31,7 @@ class ExponentialBarycenter(object):
     """
 
     @staticmethod
-    def compute(mfd: Manifold, data, x=None, max_iter=10, n_jobs=-1,alpha=1):
+    def compute(mfd: Manifold, data, x=None, max_iter=10, n_jobs=-1):
         """
         :arg mfd: data space in which mean is computed
         :arg data: list of data points
@@ -53,17 +53,16 @@ class ExponentialBarycenter(object):
 
         # Newton-type fixed point iteration
         with Parallel(n_jobs=n_jobs, prefer='threads', verbose=0) as parallel:
-            grad = lambda a: np.sum(parallel(delayed(mfd.connec.log)(a, b)/mfd.metric.norm(a,b) for b in data if b!=a), axis=0)
-            grad_denom = 1/np.sum([mdf.metric.norm(x,b) for b in data if a!=b])
+            grad = lambda a: np.sum(parallel(delayed(mfd.connec.log)(a, b) for b in data), axis=0) / len(data)
             for _ in range(max_iter):
-                g = grad(x)/grad_denom
+                g = grad(x)
                 if mfd.metric:
                     g_norm = mfd.metric.norm(x, -g)
                 else:
                     g_norm = np.linalg.norm(-g)
                 print(f'|grad|={g_norm}')
                 if g_norm < 1e-12: break
-                x = mfd.connec.exp(x, alpha*g)
+                x = mfd.connec.exp(x, g)
 
         return x
 
