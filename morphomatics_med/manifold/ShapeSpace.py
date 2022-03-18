@@ -13,7 +13,7 @@
 import abc
 
 
-from morphomatics.manifold import Manifold
+from . import Manifold
 
 
 class ShapeSpace(Manifold):

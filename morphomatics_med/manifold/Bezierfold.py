@@ -14,7 +14,7 @@ import numpy as np
 
 import scipy.integrate as integrate
 
-from morphomatics.manifold import Manifold
+from . import Manifold
 
 from joblib import Parallel, delayed
 

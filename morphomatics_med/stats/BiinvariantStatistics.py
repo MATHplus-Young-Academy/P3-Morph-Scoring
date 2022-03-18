@@ -15,8 +15,8 @@ import numpy.linalg as la
 
 from joblib import Parallel, delayed
 
-from morphomatics.manifold import LieGroup
-from morphomatics.stats import ExponentialBarycenter as Mean
+from ..manifold import LieGroup
+from . import ExponentialBarycenter as Mean
 
 
 class BiinvariantStatistics(object):

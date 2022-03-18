@@ -11,12 +11,12 @@
 ################################################################################
 
 import numpy as np
-from morphomatics.geom import BezierSpline
-from morphomatics.geom.BezierSpline import decasteljau
-from morphomatics.stats import ExponentialBarycenter
+from ..geom import BezierSpline
+from ..geom.BezierSpline import decasteljau
+from . import ExponentialBarycenter
 
-from morphomatics.manifold import Manifold
-from morphomatics.manifold.ManoptWrap import ManoptWrap
+from ..manifold import Manifold
+from ..manifold.ManoptWrap import ManoptWrap
 from pymanopt import Problem
 from pymanopt.manifolds import Product
 from pymanopt.manifolds.product import _ProductTangentVector

@@ -16,7 +16,7 @@ from joblib import Parallel, delayed
 from joblib import parallel_backend
 
 
-from morphomatics.manifold import Manifold
+from ..manifold import Manifold
 #from pymanopt.solvers import SteepestDescent
 #from pymanopt import Problem
 
@@ -31,7 +31,7 @@ class ExponentialBarycenter(object):
     """
 
     @staticmethod
-    def compute(mfd: Manifold, data, x=None, max_iter=10, n_jobs=-1,alpha=1):
+    def compute(mfd: Manifold, data, x=None, max_iter=100, n_jobs=-1,alpha=1):
         """
         :arg mfd: data space in which mean is computed
         :arg data: list of data points
@@ -53,18 +53,21 @@ class ExponentialBarycenter(object):
 
         # Newton-type fixed point iteration
         with Parallel(n_jobs=n_jobs, prefer='threads', verbose=0) as parallel:
-            grad = lambda a: np.sum(parallel(delayed(mfd.connec.log)(a, b)/mfd.metric.dist(a,b) 
-                                             for b in data if b!=a), axis=0)
-            grad_denom = lambda a: 1/np.sum([mdf.metric.dist(a,b) for b in data if a!=b])
-            for _ in range(max_iter):
+            list_log = [mfd.connect.log(x,b) for b in data]
+            normed_log = lambda a : mfd.connec.log(a[0],a[1])/mfd.metric.dist(a[0],a[1])
+            grad = lambda a: np.sum(parallel(delayed(normed_log)((a, b))
+                                             for b in data if mfd.metric.dist(a,b) > 0), axis=0)
+            grad_denom = lambda a: 1/np.sum([mfd.metric.dist(a,b) for b in data if mfd.metric.dist(a,b)>0])
+            for _ in range(100):
                 g = grad(x)*grad_denom(x)
                 if mfd.metric:
                     g_norm = mfd.metric.norm(x, -g)
                 else:
                     g_norm = np.linalg.norm(-g)
                 print(f'|grad|={g_norm}')
+                print("I AM HERE")
                 if g_norm < 1e-12: break
-                x = mfd.connec.exp(x, alpha*g)
+                x = mfd.connec.exp(x, -alpha*g)
 
         return x
 

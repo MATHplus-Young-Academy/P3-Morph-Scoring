@@ -13,6 +13,6 @@
 __version__ = '1.0'
 __version_name__ = 'Curious Ceasar'
 
-import morphomatics.geom
-import morphomatics.manifold
-import morphomatics.stats
+import morphomatics_med.geom
+import morphomatics_med.manifold
+import morphomatics_med.stats

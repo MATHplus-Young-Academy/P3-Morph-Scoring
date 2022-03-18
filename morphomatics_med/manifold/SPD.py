@@ -16,7 +16,7 @@ import numpy.linalg as la
 
 from scipy.linalg import logm, expm_frechet
 
-from morphomatics.manifold import Manifold, Metric, Connection, LieGroup
+from . import Manifold, Metric, Connection, LieGroup
 from pymanopt.tools.multi import multisym
 
 

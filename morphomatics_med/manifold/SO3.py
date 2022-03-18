@@ -15,11 +15,11 @@ import numpy as np
 from scipy.spatial.transform import Rotation
 import numpy.linalg as la
 
-from morphomatics.manifold import Manifold, Metric, Connection, LieGroup
+from . import Manifold, Metric, Connection, LieGroup
 from pymanopt.manifolds.rotations import randskew, randrot
 from pymanopt.tools.multi import multiskew
 
-from morphomatics.manifold.util import vectime3d
+from .util import vectime3d
 
 
 class SO3(Manifold):

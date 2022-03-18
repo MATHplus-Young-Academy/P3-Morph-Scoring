@@ -14,7 +14,7 @@ import copy
 
 import numpy as np
 
-from morphomatics.manifold import Manifold, Connection, LieGroup, SO3, GLpn
+from . import Manifold, Connection, LieGroup, SO3, GLpn
 
 
 class SE3(Manifold):

@@ -14,8 +14,8 @@ import numpy as np
 import numpy.random as rnd
 import numpy.linalg as la
 
-from morphomatics.manifold import Manifold, Metric, Connection
-from morphomatics.manifold.util import gram_schmidt
+from . import Manifold, Metric, Connection
+from .util import gram_schmidt
 
 
 class Sphere(Manifold):

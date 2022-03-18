@@ -13,8 +13,8 @@
 
 import numpy as np
 
-from morphomatics.manifold import ShapeSpace
-from morphomatics.stats import ExponentialBarycenter as Mean, PrincipalGeodesicAnalysis as PGA
+from ..manifold import ShapeSpace
+from . import ExponentialBarycenter as Mean, PrincipalGeodesicAnalysis as PGA
 
 class StatisticalShapeModel(object):
     ''' Statistical manifold model. '''

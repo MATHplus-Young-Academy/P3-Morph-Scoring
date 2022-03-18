@@ -13,7 +13,7 @@
 
 import numpy as np
 
-from morphomatics.geom.surface import Surface
+from morphomatics_med.geom.surface import Surface
 
 
 def align(src, ref):

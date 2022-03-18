@@ -12,7 +12,7 @@
 
 import numpy as np
 from scipy.linalg import logm, expm
-from morphomatics.manifold import Manifold, LieGroup, Connection
+from . import Manifold, LieGroup, Connection
 
 
 class GLpn(Manifold):
