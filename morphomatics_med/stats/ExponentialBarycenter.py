@@ -65,7 +65,6 @@ class ExponentialBarycenter(object):
                 else:
                     g_norm = np.linalg.norm(-g)
                 print(f'|grad|={g_norm}')
-                print("I AM HERE")
                 if g_norm < 1e-12: break
                 x = mfd.connec.exp(x, -alpha*g)
 
