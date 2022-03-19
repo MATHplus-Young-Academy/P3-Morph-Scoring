@@ -11,7 +11,6 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
-from test import say
 from morphomatics_med.geom import Surface
 from morphomatics_med.manifold import FundamentalCoords, PointDistributionModel, util
 from morphomatics_med.stats import StatisticalShapeModel
